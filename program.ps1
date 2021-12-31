@@ -46,6 +46,11 @@ function resposta {
 
 }
 
+#testando
+
+
+
+
 foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira pergunta
 
     Write-Output "exibindo a linha $linha"
