@@ -30,11 +30,12 @@ function achaLinha([string]$s){#acha o �ndice no arquivo texto que cont�m o 
 }
 
 function achaUltima{ #acha o indice da ultima linha ignorando linhas em branco
-
+    $i=0
     foreach ($candidato in $dados){
         if ($candidato.Length -gt 2){ #2? verificar
-            $global:ultima=$candidato
+            $global:ultima=$i
         }
+        $i++
     }
 }
 
@@ -45,7 +46,8 @@ function resposta {
     $x= Read-Host "Digite `"S`" para SIM, `"N`" para N�O"
     if($x -eq "s" -or $x -eq "S"){
         Write-Output "Obrigado por jogar!"
-        exit #ver isso aqui, talvez cause o fechamento da janela
+        pause
+        exit
     }
     else{
         $x= Read-Host "Digite o nome do animal que voce estava pensando"
@@ -95,6 +97,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 $temp+=$linha[$linha.Length-3]
                 $temp+=$linha[$linha.Length-2]
                 achaLinha $temp
+
                 $linha=$dados[$indice]
             }
             
