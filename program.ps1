@@ -56,7 +56,7 @@ function resposta {
         achaUltima
         [string]$valor=""
         $valor=$dados[$global:ultima][0] + $dados[$global:ultima][1] + $dados[$global:ultima][2]
-        write-output "imprimindo valor $valor"
+        write-output "imprimindo valor $valor" #apagar
         $dados = $dados + "999|$x|*|*|" #fazer uma função pra definir um índice
         $dados = $dados + "999|$pergunta|997|998|" #fazer o código para redefinir os "ponteiros"
         Clear-Content -Path 1.txt #limpa o arquivo texto
@@ -64,6 +64,7 @@ function resposta {
         
     }
 }
+
 
 
 foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira pergunta
