@@ -3,5 +3,3 @@
 003|Cachorro|*|*|
 004|pergunta numero quatro?|005|003|
 005|pergunta numero cinco?|002|003|
-
-sadfasdf

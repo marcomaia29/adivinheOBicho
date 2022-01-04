@@ -3,6 +3,7 @@ Write-Output "Eu vou descobrir em qual animal voc� est� pensando.`n`n`n" #fr
 [string]$x="" #teste
 [int]$global:indice=0 #indice da linha no arquivo texto
 [int]$global:ultima=0 #indice da ultima linha
+[string]$global:numeropadronizado=""
 
 function exibePergunta{#exibe o segundo campo da linha, sendo pergunta ou resposta
 
@@ -39,6 +40,8 @@ function achaUltima{ #acha o indice da ultima linha ignorando linhas em branco
     }
 }
 
+
+
 function resposta {
     Write-Output "O animal que voc� escolheu �:"
     exibePergunta
@@ -49,21 +52,50 @@ function resposta {
         pause
         exit
     }
-    else{
-        $x= Read-Host "Digite o nome do animal que voce estava pensando"
+    else{#caso o aplicativo tenha errado a resposta final dada ao usuário
+        $nomeAnimal= Read-Host "Digite o nome do animal que voce estava pensando"
         $pergunta= Read-Host "Digite uma pergunta-de-sim-ou-nao que diferencie esse animal do animal citado anteriormente"
-        #em desenvolvimento
+
         achaUltima
-        [string]$valor=""
+        [string]$valor=""#comporta os números padronizados do índice da última linha do texto
         $valor=$dados[$global:ultima][0] + $dados[$global:ultima][1] + $dados[$global:ultima][2]
-        write-output "imprimindo valor $valor" #apagar
-        $dados = $dados + "999|$x|*|*|" #fazer uma função pra definir um índice
-        $dados = $dados + "999|$pergunta|997|998|" #fazer o código para redefinir os "ponteiros"
+        
+        [int]$proximaresposta=$global:ultima + 3
+        [int]$proximapergunta=$global:ultima + 2
+
+
+        write-output "imprimindo global $global:ultima e imprimindo ppergunta $proximapergunta e imprimindo presposta $proximaresposta"
+
+        padroniza $proximapergunta
+        Write-Output "imprimindo pergunta padronizada $global:numeropadronizado"
+        padroniza $proximaresposta
+        Write-Output "imprimindo resposta padronizada $global:numeropadronizado"
+
+        achaLinha $linha
+        $linhaDaPergunta=$global:indice #salva o índice da pergunta onde o programa está
+        #serve para modificar a pergunta posteriormente
+
+        
+        
+
+
+        padroniza $proximapergunta
+        $dados = $dados + "$global:numeropadronizado|$pergunta|997|998|" #fazer o código para redefinir os "ponteiros"
+        padroniza $proximaresposta
+        $dados = $dados + "$global:numeropadronizado|$nomeAnimal|*|*|" #novo animal inserido
+        
         Clear-Content -Path 1.txt #limpa o arquivo texto
         Add-Content -Value $dados -Path 1.txt
         
     }
 }
+
+
+
+function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com zeros à esquerda
+    $global:numeropadronizado=([string]$numero).PadLeft(3,'0')
+}
+        
 
 
 
@@ -89,7 +121,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 $temp+=$linha[$linha.Length-7]
                 $temp+=$linha[$linha.Length-6]
                 achaLinha $temp
-                $linha=$dados[$indice]
+                $linha=$dados[$global:indice]
             }
 
             "n" { #Caso o usu�rio responda n�o para a pergunta
@@ -99,7 +131,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 $temp+=$linha[$linha.Length-2]
                 achaLinha $temp
 
-                $linha=$dados[$indice]
+                $linha=$dados[$global:indice]
             }
             
             "f" {exit}
