@@ -65,7 +65,7 @@ function resposta {
     }
 }
 
-#apagar
+
 
 foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira pergunta
 
