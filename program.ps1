@@ -3,7 +3,12 @@ Write-Output "Eu vou descobrir em qual animal voc� est� pensando.`n`n`n" #fr
 [string]$x="" #teste
 [int]$global:indice=0 #indice da linha no arquivo texto
 [int]$global:ultima=0 #indice da ultima linha
-[string]$global:numeropadronizado=""
+$global:numeropadronizado=""
+[string]$global:simounao=""
+[int]$global:linhaDaPergunta=99999
+$global:linhareconstruida=""
+
+
 
 function exibePergunta{#exibe o segundo campo da linha, sendo pergunta ou resposta
 
@@ -15,6 +20,7 @@ function exibePergunta{#exibe o segundo campo da linha, sendo pergunta ou respos
     }
 
     Write-Output "$pergunta" #Sa�da para o usu�rio  
+
 
 }
 
@@ -54,6 +60,8 @@ function resposta {
     }
     else{#caso o aplicativo tenha errado a resposta final dada ao usuário
         $nomeAnimal= Read-Host "Digite o nome do animal que voce estava pensando"
+
+        #por enquanto, o app considera que essa pergunta tem resposta "sim" para o animal que acabou de ser citado e resposta "não" para o animal que o usuário digitou
         $pergunta= Read-Host "Digite uma pergunta-de-sim-ou-nao que diferencie esse animal do animal citado anteriormente"
 
         achaUltima
@@ -63,36 +71,67 @@ function resposta {
         [int]$proximaresposta=$global:ultima + 3
         [int]$proximapergunta=$global:ultima + 2
 
-
-        write-output "imprimindo global $global:ultima e imprimindo ppergunta $proximapergunta e imprimindo presposta $proximaresposta"
-
         padroniza $proximapergunta
-        Write-Output "imprimindo pergunta padronizada $global:numeropadronizado"
-        padroniza $proximaresposta
-        Write-Output "imprimindo resposta padronizada $global:numeropadronizado"
+        reconstruir $global:numeropadronizado
 
-        achaLinha $linha
-        $linhaDaPergunta=$global:indice #salva o índice da pergunta onde o programa está
-        #serve para modificar a pergunta posteriormente
+
+        #esta parte do código se faz desnecessária ao se fazer possível retorno de funções
+        [string]$p="" #variável temporária
+        [int]$n=$proximaresposta #variável temporária #talvez $n seja desnecessária
+        $p=([string]$n).PadLeft(3,'0') #padroniza o int em uma string de 3 caracteres
+
+
+
+        $dados = $dados + "$global:numeropadronizado|$pergunta|$temp|$p|" #nova pergunta inserida
+        $dados = $dados + "$p|$nomeAnimal|*|*|" #novo animal inserido
 
         
-        
-
-
-        padroniza $proximapergunta
-        $dados = $dados + "$global:numeropadronizado|$pergunta|997|998|" #fazer o código para redefinir os "ponteiros"
-        padroniza $proximaresposta
-        $dados = $dados + "$global:numeropadronizado|$nomeAnimal|*|*|" #novo animal inserido
-        
-        Clear-Content -Path 1.txt #limpa o arquivo texto
-        Add-Content -Value $dados -Path 1.txt
+        $dados[$global:linhaDaPergunta]=$global:linhareconstruida
+        Clear-Content -Path dado.txt #limpa o arquivo texto
+        Add-Content -Value $dados -Path dado.txt
         
     }
 }
+function reconstruir ([string]$s){#reconstroi a linha da última pergunta para mudar os índices 
+#Esta função pode ser eliminada quando eu encontrar um jeito de mudar caracteres individuais de uma string
+
+    $temp=$dados[$global:linhaDaPergunta]
+    $t=""
+    $cont=0
+    while ($cont -ne $temp.Length-9) {#adiciona caracter por caracter dentro da variavel t
+        $t+=$temp[$cont]
+        $cont++
+    }
+
+    $camposim=$temp[$temp.Length-8]
+    $camposim+=$temp[$temp.Length-7]
+    $camposim+=$temp[$temp.Length-6]
+
+    $camponao=$temp[$temp.Length-4]
+    $camponao+=$temp[$temp.Length-3]
+    $camponao+=$temp[$temp.Length-2]
+
+    
+    
+    if($global:simounao -eq "s"){
+        $camposim=$s
+    }
+    else {
+        $camponao=$s
+    }
+    
+    
 
 
 
-function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com zeros à esquerda
+
+    
+    $global:linhareconstruida="$t|$camposim|$camponao|"
+    
+
+}
+
+function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com zeros à esquerda #eliminar essa função depois
     $global:numeropadronizado=([string]$numero).PadLeft(3,'0')
 }
         
@@ -104,6 +143,12 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
     if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em quest�o for uma pergunta
     break }       
 }
+
+
+
+
+
+
     
     [string]$temp=""
     $interruptor=0
@@ -111,10 +156,15 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
 
         #cls
         if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em quest�o for uma pergunta
+
+
+            achaLinha $linha
+            $global:linhaDaPergunta=$global:indice #salva o índice da pergunta onde o programa está
+            #serve para modificar a pergunta posteriormente
         
             exibePergunta
-            $x= Read-Host "Digite `"S`" para SIM, `"N`" para N�O ou digite `"F`" para finalizar"
-            switch ($x){
+            $global:simounao= Read-Host "Digite `"S`" para SIM, `"N`" para N�O ou digite `"F`" para finalizar"
+            switch ($global:simounao){
             "s"{ #Caso o usu�rio responda sim para a pergunta
 
                 $temp=$linha[$linha.Length-8] #adiciona o campo que cont�m o n�mero da linha na vari�vel temp
@@ -122,6 +172,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 $temp+=$linha[$linha.Length-6]
                 achaLinha $temp
                 $linha=$dados[$global:indice]
+                
             }
 
             "n" { #Caso o usu�rio responda n�o para a pergunta
@@ -132,6 +183,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 achaLinha $temp
 
                 $linha=$dados[$global:indice]
+                
             }
             
             "f" {exit}
@@ -147,10 +199,14 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
 
 
         else{ #Se a linha em quest�o for uma resposta
+
+            
             
             resposta
             $interruptor=1 #quebra o while acima
         }
+        
+
         
 
         

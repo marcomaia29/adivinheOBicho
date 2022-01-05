@@ -1,7 +1,0 @@
-001|Esse bicho mora no mar?|004|003|
-002|Baleia|*|*|
-003|Cachorro|*|*|
-004|pergunta numero quatro?|005|003|
-005|pergunta numero cinco?|002|003|
-006|asdf|997|998|
-007|asdf|*|*|
