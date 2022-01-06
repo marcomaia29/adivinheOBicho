@@ -1,7 +1,13 @@
-001|Esse bicho mora no mar?|004|003|
+001|Esse bicho mora no mar?|006|004|
 002|Baleia|*|*|
 003|Cachorro|*|*|
-004|pergunta numero quatro?|005|003|
-005|pergunta numero cinco?|002|003|
-
-sadfasdf
+004|esse animal tem 4 patas?|003|008|
+005|aranha|*|*|
+006|é mamífero?|002|007|
+007|tubarão|*|*|
+008|esse animal tem 8 patas?|005|010|
+009|formiga|*|*|
+010|esse animal gosta muito de açúcar?|009|012|
+011|borboleta|*|*|
+012|esse animal tem asas coloridas?|011|013|
+013|centopéia|*|*|
