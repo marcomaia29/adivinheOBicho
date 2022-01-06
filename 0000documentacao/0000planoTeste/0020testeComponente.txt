@@ -1,1 +1,11 @@
+teste componente:
+o programador deve listar os testes de modo que toda a linha de codigo criada execute
+corretamente o que ela se propoe. Neste teste o programador deve checar se todas as 
+excecoes estao sendo tratadas pela aplicacao.
+
+1- Testar se no inicio o aplicativo pede para eu pensar em um animal.
+2 - Procurar se o arquivo dados.txt existe no local [...]
+3 - A aplicacao esta achando a primeira linha que e considerada uma pergunta no arquivo?
+4 - Testar se a aplicacao retorna uma mensagem avisando ao usuario que a base de conhecimento
+    não esta correta.
 

@@ -1,43 +1,17 @@
-3.1) Adivinha qual o bicho. 
-
- 
-
-Criar um arquivo texto manualmente com as seguintes linhas: 
-
- 
-
-001|Esse bicho mora no mar?|002|003| 
-
-002|Baleia|*|*| 
-
-003|Cachorro|*|*| 
-
- 
-
-Cada registro do arquivo (linhas) terá 4 campos (colunas). Cada fim de coluna é delimitada pelo caracter "|". 
-
- 
-
-Passo 0: O Aplicativo enviará uma mensagem para o usuário, pedindo para ele pensar em um animal, e teclar no botão [Ok], quando o animal for escolhido. O aplicativo afirmará para o usuário que ele vai descobrir qual é este animal, após o usuário responder algumas perguntas. 
-
- 
+Passo 0: O Aplicativo enviará uma mensagem para o usuário, pedindo para ele pensar em um animal, 
+e teclar no botão [Ok], quando o animal for escolhido. O aplicativo afirmará para o usuário que 
+ele vai descobrir qual é este animal, após o usuário responder algumas perguntas. 
 
 Passo 1: 
 
-Ao ser executado o aplicativo ele lerá o arquivo linha a linha, até achar a primeira linha em que os campos 3 e 4, seja diferente do caractere "*". 
-
+Ao ser executado o aplicativo ele lerá o arquivo linha a linha, até achar a primeira linha 
+em que os campos 3 e 4, seja diferente do caractere "*". 
 Nesta condição a aplicação apresentará em uma conversa com o usuário o conteúdo do campo 2. 
-
 Baseado no exemplo do nosso arquivo o aplicativo perguntaria: 
-
 "Esse bicho mora no mar?" 
-
 O aplicativo dirá ao usuário que ele só pode responder com uma das três letras abaixo: 
-
 "S" - Sim para a pergunta. 
-
 "N" - Não para a pergunta. 
-
 "F" - Finaliza a aplicação. 
 
  

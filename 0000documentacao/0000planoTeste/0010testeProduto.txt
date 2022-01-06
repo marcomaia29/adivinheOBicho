@@ -1,1 +1,9 @@
+teste de produto
+e o teste combinado com o usuario/cliente para que a aplicacao seja aprovada
 
+2 - Aplicação vai encadear uma série de perguntas para eu responder sim ou não até que 
+    aplicação descubra o bicho que eu estou pensando. Não devo receber nenhuma mensagem de erro
+    durante este processo.
+3 - Ao final da sequência de perguntas a aplicação vai apresentar uma resposta baseada nas respostas
+    do usuário.
+4 - A aplicação vai pedir para o usuário confirmar ou não se a resposta esta correta ...

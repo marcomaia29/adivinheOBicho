@@ -1,1 +1,4 @@
+teste montagem
+quando eu tiver varios componentes em uma aplicacao, o teste de montagem seria testar
+dependencia de funcionamento entre os componentes.
 
