@@ -1,1 +1,7 @@
+Criar um arquivo texto manualmente com as seguintes linhas: 
+001|Esse bicho mora no mar?|002|003| 
+002|Baleia|*|*| 
+003|Cachorro|*|*| 
+Cada registro do arquivo (linhas) terá 4 campos (colunas). Cada fim de coluna é delimitada pelo caracter "|". 
 
+ 
