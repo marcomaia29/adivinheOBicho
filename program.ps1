@@ -1,5 +1,5 @@
 $dados = Get-content dado.txt #variavel recebe todo o conteudo do arquivo de texto
-Write-Output "Eu vou descobrir em qual animal voc� est� pensando.`n`n`n" #frase de efeito
+Write-Output "Eu vou descobrir em qual animal você está pensando.`n`n`n" #frase de efeito
 [string]$x="" #teste
 [int]$global:indice=0 #indice da linha no arquivo texto
 [int]$global:ultima=0 #indice da ultima linha
@@ -14,21 +14,21 @@ function exibePergunta{#exibe o segundo campo da linha, sendo pergunta ou respos
 
     $pergunta = $linha[4]#recebe a primeira letra do texto da pergunta
     $cont = 5
-    while ($linha[$cont] -ne "|") {#adiciona caracter por caracter dentro da vari�vel pergunta
+    while ($linha[$cont] -ne "|") {#adiciona caracter por caracter dentro da variável pergunta
         $pergunta += $linha[$cont]
         $cont++
     }
 
-    Write-Output "$pergunta" #Sa�da para o usu�rio  
+    Write-Output "$pergunta" #Saída para o usuário  
 
 
 }
 
-function achaLinha([string]$s){#acha o �ndice no arquivo texto que cont�m o texto em quest�o
+function achaLinha([string]$s){#acha o Índice no arquivo texto que contém o texto em questão
     [int]$cont=0
     foreach ($linhaa in $dados){
         if($linhaa[0] -eq $s[0] -and $linhaa[1] -eq $s[1] -and $linhaa[2] -eq $s[2]) {
-            $global:indice=$cont #vari�vel global recebe o �ndice
+            $global:indice=$cont #variável global recebe o índice
             break
         }
         $cont++
@@ -188,7 +188,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
             
             "f" {exit}
 
-            default {"Entrada inv�lida"}
+            default {"Entrada inválida"}
 
             }
 
@@ -198,7 +198,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
         }
 
 
-        else{ #Se a linha em quest�o for uma resposta
+        else{ #Se a linha em questão for uma resposta
 
             
             
