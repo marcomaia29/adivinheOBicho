@@ -49,10 +49,10 @@ function achaUltima{ #acha o indice da ultima linha ignorando linhas em branco
 
 
 function resposta {
-    Write-Output "O animal que voc� escolheu �:"
+    Write-Output "O animal que você escolheu é:"
     exibePergunta
     Write-Output "Acertei?"
-    $x= Read-Host "Digite `"S`" para SIM, `"N`" para N�O"
+    $x= Read-Host "Digite `"S`" para SIM, `"N`" para NÃO"
     if($x -eq "s" -or $x -eq "S"){
         Write-Output "Obrigado por jogar!"
         pause
