@@ -1,0 +1,61 @@
+Passo 0: O Aplicativo enviará uma mensagem para o usuário, pedindo para ele pensar em um animal, 
+e teclar no botão [Ok], quando o animal for escolhido. O aplicativo afirmará para o usuário que 
+ele vai descobrir qual é este animal, após o usuário responder algumas perguntas. 
+
+Passo 1: 
+
+Ao ser executado o aplicativo ele lerá o arquivo linha a linha, até achar a primeira linha 
+em que os campos 3 e 4, seja diferente do caractere "*". 
+Nesta condição a aplicação apresentará em uma conversa com o usuário o conteúdo do campo 2. 
+Baseado no exemplo do nosso arquivo o aplicativo perguntaria: 
+"Esse bicho mora no mar?" 
+O aplicativo dirá ao usuário que ele só pode responder com uma das três letras abaixo: 
+"S" - Sim para a pergunta. 
+"N" - Não para a pergunta. 
+"F" - Finaliza a aplicação. 
+
+ 
+
+Caso o usuário selecione "F", a aplicação é finalizada. 
+
+Caso o usuário selecione "S", a aplicação usará o conteúdo do campo 3, que indica onde está a resposta para a opção "S". 
+
+No nosso exemplo ele retornará o valor "002". 
+
+ 
+
+Passo 2: 
+
+Procurar no arquivo a linha cujo o primeiro campo (campo chave), tenha o valor recuperado na pergunta. 
+
+No nosso exemplo ele achará a linha: 002|Baleia|*|*| 
+
+Caso os campos 3 e 4 sejam diferentes de "*", o passo 1 será repetido, caso contrário, o aplicativo apresentará ao usuário a resposta sobre qual animal foi pensando e exibirá o conteúdo do segudo campo do nosso registro. No nosso exemplo a resposta será: "Baleia". 
+
+Todo este procedimento será idêntico, caso o usuário escolha a resposta "N" a pergunta, sendo que ao encontrar a linha com os campos 3 e 4 preenchidos com o caractere "*", a próxima linha a ser procurada no arquivo, será a linha cuja chave seja o valor do quarto campo. No nosso exemplo seria o valor "003" e a resposta para o usuário seria "Cachorro". 
+
+ 
+
+Passo 3: 
+
+Após o aplicativo divulgar para o usuário o nome do bicho que ele julga ser o que o usuário pensou, o aplicativo irá perguntar se a resposta está certa ou errada. Caso esteja certo, o aplicativo pergunta se o usuário quer jogar novamente ou encerrar o aplicativo. 
+
+ 
+
+Passo 4: 
+
+Caso a resposta esteja errada o aplicativo perguntará o nome do animal pensando pelo usuário. No nosso exemplo vamos imaginar que o usuário pensou no "Tubarão". Após guardar o novo nome do animal, o aplicativo pedirá ao usuário que escreva uma pergunta que possibilite ao aplicativo aprender o que diferencie a resposta certa da errada. No nosso exemplo ficaria algo assim: 
+
+Me diga uma pergunta em que eu possa diferenciar "Tubarão" de "Baleia". 
+
+No nosso exemplo o usuário nos passou a seguinte pergunta: 
+
+"O bicho que você pensou é um mamífero?" 
+
+Em seguida o aplicativo perguntará se esta pergunta para o animal que eu já conhecia (Baleia), a resposta é sim (S) ou não (N). Neste caso o usuário imaginando que ele seja correto, responderia sim, para Baleia. 
+
+ 
+
+De posse de todas estas informações o aplicativo terá que fazer uma alteração no arquivo para que ele continue funcionando corretamente. Parte do seu exercício agora é imaginar qual o seria o algoritmo para que ele termine o seu aprendizado e inclua o novo animal na sua base de dados. 
+
+ 

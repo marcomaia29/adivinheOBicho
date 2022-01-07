@@ -1,0 +1,4 @@
+teste de performance
+seria testar a aplicacao com um volume muito grade de dados, para saber se o hardware/recursos
+dimensionados sao adequados
+
