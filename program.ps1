@@ -1,5 +1,5 @@
 $dados = Get-content dado.txt #variavel recebe todo o conteudo do arquivo de texto
-Write-Output "Eu vou descobrir em qual animal vocÃª estÃ¡ pensando.`n`n`n" #frase de efeito
+Write-Output "Eu vou descobrir em qual animal você está pensando.`n`n`n" #frase de efeito
 [string]$x="" #teste
 [int]$global:indice=0 #indice da linha no arquivo texto
 [int]$global:ultima=0 #indice da ultima linha
@@ -144,8 +144,9 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
     break }       
 }
 
-
-
+[int]$asi=0
+$asi=$dados.Lenght
+Write-Output "imprimindo lenght $asi"
 
 
 
