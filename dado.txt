@@ -3,7 +3,7 @@
 003|Cachorro|*|*|
 004|esse animal tem 4 patas?|003|008|
 005|aranha|*|*|
-006|é mamífero?|002|007|
+006|é mamífero?|002|016|
 007|tubarão|*|*|
 008|esse animal tem 8 patas?|005|010|
 009|formiga|*|*|
@@ -13,3 +13,5 @@
 013|centopéia|*|*|
 014|É uma ave?|013|015|
 015|avestruz|*|*|
+016|Esse animal é grande?|007|017|
+017|Peixe|*|*|
