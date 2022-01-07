@@ -40,12 +40,12 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
     while ($interruptor -eq 0){
 
         #cls
-        if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em quest�o for uma pergunta
+        if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em quest�o for uma pergunta
 
             #achaLinha cdBicho
 
             achaLinha $linha
-            $global:linhaDaPergunta=$global:indice #salva o índice da pergunta onde o programa está
+            $global:linhaDaPergunta=$global:indice #salva o ͭndice da pergunta onde o programa está
             #serve para modificar a pergunta posteriormente
         
             exibePergunta
@@ -53,7 +53,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
             switch ($global:simounao){
             "s"{ #Caso o usuario responda sim para a pergunta
 
-                $temp=$linha[$linha.Length-8] #adiciona o campo que cont�m o n�mero da linha na vari�vel temp
+                $temp=$linha[$linha.Length-8] #adiciona o campo que cont�m o num�ricoo da linha na vari�vel temp
                 $temp+=$linha[$linha.Length-7]
                 $temp+=$linha[$linha.Length-6]
                 achaLinha $temp
