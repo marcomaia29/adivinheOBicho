@@ -1,0 +1,21 @@
+001|Esse bicho mora no mar?|006|020|
+002|Baleia|*|*|
+003|Cachorro|*|*|
+004|esse animal tem 4 patas?|003|008|
+005|aranha|*|*|
+006|É mamífero?|002|016|
+007|tubarão|*|*|
+008|esse animal tem 8 patas?|005|010|
+009|formiga|*|*|
+010|esse animal gosta muito de aï¿½ï¿½car?|009|012|
+011|borboleta|*|*|
+012|esse animal tem asas coloridas?|011|014|
+013|centopéia|*|*|
+014|É uma ave?|013|015|
+015|avestruz|*|*|
+016|Esse animal é grande?|007|017|
+017|Peixe|*|*|
+018|Tem espinhos?|019|017|
+019|ouriço|*|*|
+020||021|017|
+021||*|*|

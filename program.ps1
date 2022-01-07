@@ -1,103 +1,49 @@
-$dados = Get-content dado.txt #variável recebe todo o conteudo do arquivo de texto
-Write-Output "Eu vou descobrir em qual animal você está pensando.`n`n`n" #frase de efeito
-[int]$global:indice=0 #índice da linha no arquivo texto
-[int]$global:ultima=0 #índice da ultima linha
+$dados = Get-content dado.txt #variï¿½vel recebe todo o conteudo do arquivo de texto
+Write-Output "Eu vou descobrir em qual animal vocï¿½ estï¿½ pensando.`n`n`n" #frase de efeito
+[int]$global:indice=0 #Ãndice da linha no arquivo texto
+[int]$ind=0 #Ãndice da linha no arquivo texto
+[int]$global:ultima=0 #Ãndice da ultima linha
 $global:numeropadronizado=""
 [string]$global:simounao=""
 [int]$global:linhaDaPergunta=99999
 $global:linhareconstruida=""
 
-
-<<<<<<< HEAD
-Write-Output "Eu vou descobrir em qual animal vocÃª estÃ¡ pensando.`n`n`n" #frase de efeito
-
-foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira pergunta
-
-    # cdBicho = left($linha,3)
-
-    if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em questao for uma pergunta
-    break }       
-}
-    
-    [string]$temp=""
-    $interruptor=0
-    while ($interruptor -eq 0){
-
-        #cls
-        if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em questão for uma pergunta
-
-            #achaLinha cdBicho
-
-            achaLinha $linha
-            $global:linhaDaPergunta=$global:indice #salva o Í­ndice da pergunta onde o programa estÃ¡
-            #serve para modificar a pergunta posteriormente
-        
-            exibePergunta
-            $global:simounao= Read-Host "Digite `"S`" para SIM, `"N`" para Nï¿½O ou digite `"F`" para finalizar"
-            switch ($global:simounao){
-            "s"{ #Caso o usuario responda sim para a pergunta
-
-                $temp=$linha[$linha.Length-8] #adiciona o campo que contï¿½m o numéricoo da linha na variï¿½vel temp
-                $temp+=$linha[$linha.Length-7]
-                $temp+=$linha[$linha.Length-6]
-                achaLinha $temp
-                $linha=$dados[$global:indice]
-                
-            }
-
-            "n" { #Caso o usuario responda nao para a pergunta
-
-                $temp=$linha[$linha.Length-4] #adiciona o campo que contÃ©m o nÃºmero da linha na variÃ¡vel temp
-                $temp+=$linha[$linha.Length-3]
-                $temp+=$linha[$linha.Length-2]
-                achaLinha $temp
-
-                $linha=$dados[$global:indice]
-                
-            }
-            
-            "f" {exit}
-
-            default {"Entrada invÃ¡lida"}
-
-            }
-
-        }
-
-        else{ #Se a linha em questÃ£o for uma resposta
-            
-            resposta
-            $interruptor=1 #quebra o while acima
-        }
-       
-
-    }
-
-#
-# funcoes usadas pela aplicacao
-# 
-=======
->>>>>>> 0f363f6e03a687343bad5252c2ee27ea69806975
-
 function exibePergunta{#exibe o segundo campo da linha, sendo pergunta ou resposta
 
     $pergunta = $linha[4]#recebe a primeira letra do texto da pergunta
     $cont = 5
-    while ($linha[$cont] -ne "|") {#adiciona caracter por caracter dentro da variável pergunta
+    while ($linha[$cont] -ne "|") {#adiciona caracter por caracter dentro da variï¿½vel pergunta
         $pergunta += $linha[$cont]
         $cont++
     }
 
-    Write-Output "$pergunta" #Saída para o usuário
+    Write-Output "$pergunta" #Saï¿½da para o usuï¿½rio
 
 
 }
 
-function achaLinha([string]$s){#acha o índice no arquivo texto que contém o texto em questão
+function achaLinhaMM([string]$linha){#acha o ï¿½ndice no arquivo texto que contï¿½m o texto em questï¿½o
+    [int]$cont=0
+    foreach ($linhaPesquisada in $dados){
+        if($linhaPesquisada[0] -eq $linha[0] -and 
+           $linhaPesquisada[1] -eq $linha[1] -and 
+           $linhaPesquisada[2] -eq $linha[2]) 
+        {
+            #$global:indice=$cont #variÃ¡vel global recebe o Ã­ndice
+            #achaLinhaMM = $cont
+            achaLinhaMM = $cont
+            #break
+        }
+        $cont++
+        
+    }
+}
+
+function achaLinha([string]$s){#acha o ï¿½ndice no arquivo texto que contï¿½m o texto em questï¿½o
     [int]$cont=0
     foreach ($linhaa in $dados){
         if($linhaa[0] -eq $s[0] -and $linhaa[1] -eq $s[1] -and $linhaa[2] -eq $s[2]) {
-            $global:indice=$cont #variável global recebe o índice
+            $global:indice=$cont #variï¿½vel global recebe o ï¿½ndice
             break
         }
         $cont++
@@ -105,7 +51,7 @@ function achaLinha([string]$s){#acha o índice no arquivo texto que contém o text
     }
 }
 
-function achaUltima{ #acha o índice da última linha ignorando linhas em branco
+function achaUltima{ #acha o ï¿½ndice da ï¿½ltima linha ignorando linhas em branco
     $i=0
     foreach ($candidato in $dados){
         if ($candidato.Length -gt 2){ #2? verificar
@@ -114,7 +60,6 @@ function achaUltima{ #acha o índice da última linha ignorando linhas em branco
         $i++
     }
 }
-
 
 
 function resposta {
@@ -127,17 +72,16 @@ function resposta {
         pause
         exit
     }
-    else{#caso o aplicativo tenha errado a resposta final dada ao usuário
+    else{#caso o aplicativo tenha errado a resposta final dada ao usuï¿½rio
         $nomeAnimal= Read-Host "Digite o nome do animal que você estava pensando"
 
-        #por enquanto, o app considera que essa pergunta tem resposta "sim" para o animal que acabou de ser citado e resposta "não" para o animal que o usuário digitou
+        #por enquanto, o app considera que essa pergunta tem resposta "sim" para o animal que acabou de ser citado e resposta "nï¿½o" para o animal que o usuï¿½rio digitou
         $pergunta= Read-Host "Digite uma pergunta-de-sim-ou-não que diferencie esse animal do animal citado anteriormente"
 
         $simnaopergunta= Read-Host "Para o animal que você acabou de digitar, a resposta dessa pergunta é sim ou não? `n Digite `"S`" para SIM, `"N`" para NÃO"
         
-
         achaUltima
-        [string]$valor=""#comporta os números padronizados do índice da última linha do texto
+        [string]$valor=""#comporta os nï¿½meros padronizados do ï¿½ndice da ï¿½ltima linha do texto
         $valor=$dados[$global:ultima][0] + $dados[$global:ultima][1] + $dados[$global:ultima][2]
         
         [int]$proximaresposta=$global:ultima + 3
@@ -147,16 +91,16 @@ function resposta {
         reconstruir $global:numeropadronizado
 
 
-        #esta parte do código se faz desnecessária ao se fazer possí­vel retorno de funções
-        [string]$p="" #variável temporária
-        [int]$n=$proximaresposta #variável temporária #talvez $n seja desnecessária
+        #esta parte do cï¿½digo se faz desnecessï¿½ria ao se fazer possï¿½ï¿½vel retorno de funï¿½ï¿½es
+        [string]$p="" #variï¿½vel temporï¿½ria
+        [int]$n=$proximaresposta #variï¿½vel temporï¿½ria #talvez $n seja desnecessï¿½ria
         $p=([string]$n).PadLeft(3,'0') #padroniza o int em uma string de 3 caracteres
 
 
         if ($simnaopergunta -eq "n" -or $simnaopergunta -eq "N"){
             $dados = $dados + "$global:numeropadronizado|$pergunta|$temp|$p|" #nova pergunta inserida
         }
-        else{#posteriormente adicionar código para impedir o usuário de digtar uma entrada inválida
+        else{#posteriormente adicionar cï¿½digo para impedir o usuï¿½rio de digtar uma entrada invï¿½lida
             $dados = $dados + "$global:numeropadronizado|$pergunta|$p|$temp|"
         }
         
@@ -169,13 +113,13 @@ function resposta {
         
     }
 }
-function reconstruir ([string]$s){#reconstroi a linha da Última pergunta para mudar os Índices 
-#Esta função pode ser eliminada quando eu encontrar um jeito de mudar caracteres individuais de uma string
+function reconstruir ([string]$s){#reconstroi a linha da ï¿½ltima pergunta para mudar os ï¿½ndices 
+#Esta funï¿½ï¿½o pode ser eliminada quando eu encontrar um jeito de mudar caracteres individuais de uma string
 
     $temp=$dados[$global:linhaDaPergunta]
     $t=""
     $cont=0
-    while ($cont -ne $temp.Length-9) {#adiciona caracter por caracter dentro da variável t
+    while ($cont -ne $temp.Length-9) {#adiciona caracter por caracter dentro da variï¿½vel t
         $t+=$temp[$cont]
         $cont++
     }
@@ -208,7 +152,7 @@ function reconstruir ([string]$s){#reconstroi a linha da Última pergunta para mu
 
 }
 
-function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com zeros à esquerda #eliminar essa função depois
+function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com zeros ï¿½ esquerda #eliminar essa funï¿½ï¿½o depois
     $global:numeropadronizado=([string]$numero).PadLeft(3,'0')
 }
         
@@ -217,7 +161,7 @@ function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com
 
 foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira pergunta
 
-    if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em questão for uma pergunta
+    if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em questï¿½o for uma pergunta
     break }       
 }
 
@@ -227,19 +171,21 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
     while ($interruptor -eq 0){
 
         #cls
-        if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em questï¿?o for uma pergunta
+        if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em questï¿½?o for uma pergunta
 
 
             achaLinha $linha
-            $global:linhaDaPergunta=$global:indice #salva o Ã­ndice da pergunta onde o programa estÃ¡
+            $ind = achalinhaMM($linha) 
+            #$global:linhaDaPergunta=$global:indice #salva o Ã­ndice da pergunta onde o programa estÃ¡
+            $global:linhaDaPergunta=$ind #salva o Í­ndice da pergunta onde o programa estÃ¡
             #serve para modificar a pergunta posteriormente
         
             exibePergunta
-            $global:simounao= Read-Host "Digite `"S`" para SIM, `"N`" para NÃO ou digite `"F`" para finalizar"
+            $global:simounao= Read-Host "Digite `"S`" para SIM, `"N`" para Nï¿½O ou digite `"F`" para finalizar"
             switch ($global:simounao){
-            "s"{ #Caso o usuï¿?rio responda sim para a pergunta
+            "s"{ #Caso o usuï¿½?rio responda sim para a pergunta
 
-                $temp=$linha[$linha.Length-8] #adiciona o campo que contï¿?m o nï¿?mero da linha na variï¿?vel temp
+                $temp=$linha[$linha.Length-8] #adiciona o campo que contï¿½?m o nï¿½?mero da linha na variï¿½?vel temp
                 $temp+=$linha[$linha.Length-7]
                 $temp+=$linha[$linha.Length-6]
                 achaLinha $temp
@@ -247,9 +193,9 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 
             }
 
-            "n" { #Caso o usuï¿?rio responda nï¿?o para a pergunta
+            "n" { #Caso o usuï¿½?rio responda nï¿½?o para a pergunta
 
-                $temp=$linha[$linha.Length-4] #adiciona o campo que contï¿?m o nï¿?mero da linha na variï¿?vel temp
+                $temp=$linha[$linha.Length-4] #adiciona o campo que contï¿½?m o nï¿½?mero da linha na variï¿½?vel temp
                 $temp+=$linha[$linha.Length-3]
                 $temp+=$linha[$linha.Length-2]
                 achaLinha $temp
@@ -260,7 +206,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
             
             "f" {exit}
 
-            default {"Entrada inválida"}
+            default {"Entrada invï¿½lida"}
 
             }
 
@@ -270,7 +216,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
         }
 
 
-        else{ #Se a linha em questão for uma resposta
+        else{ #Se a linha em questï¿½o for uma resposta
 
             
             
