@@ -63,8 +63,11 @@ function resposta {
         #por enquanto, o app considera que essa pergunta tem resposta "sim" para o animal que acabou de ser citado e resposta "não" para o animal que o usuário digitou
         $pergunta= Read-Host "Digite uma pergunta-de-sim-ou-não que diferencie esse animal do animal citado anteriormente"
 
+        $simnaopergunta= Read-Host "Para o animal que você acabou de digitar, a resposta dessa pergunta é sim ou não? `n Digite `"S`" para SIM, `"N`" para NÃO"
+        
+
         achaUltima
-        [string]$valor=""#comporta os números padronizados do Índice da última linha do texto
+        [string]$valor=""#comporta os números padronizados do índice da última linha do texto
         $valor=$dados[$global:ultima][0] + $dados[$global:ultima][1] + $dados[$global:ultima][2]
         
         [int]$proximaresposta=$global:ultima + 3
@@ -80,8 +83,13 @@ function resposta {
         $p=([string]$n).PadLeft(3,'0') #padroniza o int em uma string de 3 caracteres
 
 
-
-        $dados = $dados + "$global:numeropadronizado|$pergunta|$temp|$p|" #nova pergunta inserida
+        if ($simnaopergunta -eq "n" -or $simnaopergunta -eq "N"){
+            $dados = $dados + "$global:numeropadronizado|$pergunta|$temp|$p|" #nova pergunta inserida
+        }
+        else{#posteriormente adicionar código para impedir o usuário de digtar uma entrada inválida
+            $dados = $dados + "$global:numeropadronizado|$pergunta|$p|$temp|"
+        }
+        
         $dados = $dados + "$p|$nomeAnimal|*|*|" #novo animal inserido
 
         
