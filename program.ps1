@@ -59,12 +59,30 @@ function resposta {
     }
     else{#caso o aplicativo tenha errado a resposta final dada ao usuário
         $nomeAnimal= Read-Host "Digite o nome do animal que você estava pensando"
+        if($nomeAnimal.Length -lt 1){
+            do{
+            Write-Output "Entrada inválida, necessário pelo menos 1 caractere"
+            $nomeAnimal= Read-Host "Digite o nome do animal que você estava pensando"
+            }while($nomeAnimal.Length -lt 1)
+        }
 
         #por enquanto, o app considera que essa pergunta tem resposta "sim" para o animal que acabou de ser citado e resposta "não" para o animal que o usuário digitou
         $pergunta= Read-Host "Digite uma pergunta-de-sim-ou-não que diferencie esse animal do animal citado anteriormente"
+        if($pergunta.Length -lt 1){
+            do{
+            Write-Output "Entrada inválida, necessário pelo menos 1 caractere"
+            $pergunta= Read-Host "Digite uma pergunta-de-sim-ou-não que diferencie esse animal do animal citado anteriormente"
+            }while($nomeAnimal.Length -lt 1)
+        }
+
 
         $simnaopergunta= Read-Host "Para o animal que você acabou de digitar, a resposta dessa pergunta é sim ou não? `n Digite `"S`" para SIM, `"N`" para NÃO"
-        
+        if($simnaopergunta.Length -lt 1){
+            do{
+            Write-Output "Entrada inválida, necessário pelo menos 1 caractere"
+            $simnaopergunta= Read-Host "Para o animal que você acabou de digitar, a resposta dessa pergunta é sim ou não? `n Digite `"S`" para SIM, `"N`" para NÃO"
+            }while($nomeAnimal.Length -lt 1)
+        }
 
         achaUltima
         [string]$valor=""#comporta os números padronizados do índice da última linha do texto
