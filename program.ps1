@@ -24,15 +24,8 @@ function exibe{#exibe o segundo campo da linha, sendo pergunta ou resposta
 }
 
 function achaLinha([string]$s){#acha o índice no arquivo texto que contém o texto em questão
-    [int]$cont=0
-    foreach ($linhaa in $dados){
-        if($linhaa[0] -eq $s[0] -and $linhaa[1] -eq $s[1] -and $linhaa[2] -eq $s[2]) {
-            $global:indice=$cont #variável global recebe o índice
-            break
-        }
-        $cont++
-        
-    }
+    $s1= $s[0] + $s[1] + $s[2]
+    $global:indice=([int]$s1) -1
 }
 
 function achaUltima{ #acha o índice da última linha ignorando linhas em branco
