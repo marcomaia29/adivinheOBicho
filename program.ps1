@@ -1,6 +1,5 @@
 $dados = Get-content dado.txt #variïável recebe todo o conteudo do arquivo de texto
-Write-Output "Eu vou descobrir em qual animal você está pensando.`n`n`n" #frase de efeito
-[int]$global:indice=0 #índice da linha no arquivo texto
+Write-Output "Eu vou descobrir em qual animal você está pensando.`n`n`n" #frase de efeiton
 $global:numeropadronizado=""
 [string]$global:simounao=""
 [int]$global:linhaDaPergunta=99999
@@ -24,7 +23,8 @@ function exibe{#exibe o segundo campo da linha, sendo pergunta ou resposta
 
 function achaLinha([string]$s){#acha o índice no arquivo texto que contém o texto em questão
     $s1= $s[0] + $s[1] + $s[2]
-    $global:indice=([int]$s1) -1
+    $i=([int]$s1) -1
+    return $i
 }
 
 function achaUltima{ #acha o índice da última linha ignorando linhas em branco
@@ -79,7 +79,6 @@ function resposta {
         }
 
         [int]$ultima=achaUltima
-
         [string]$valor=""#comporta os números padronizados do índice da última linha do texto
         $valor=$dados[$ultima][0] + $dados[$ultima][1] + $dados[$ultima][2]
         
@@ -154,7 +153,7 @@ function reconstruir ([string]$s){#reconstroi a linha da última pergunta para mu
 
 }
 
-function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com zeros ï¿½ esquerda #eliminar essa funï¿½ï¿½o depois
+function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com zeros à esquerda #eliminar essa função depois
     $global:numeropadronizado=([string]$numero).PadLeft(3,'0')
 }
         
@@ -176,8 +175,8 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
         if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em questão for uma pergunta
 
 
-            achaLinha $linha
-            $global:linhaDaPergunta=$global:indice #salva o índice da pergunta onde o programa está
+            $indice=achaLinha $linha
+            $global:linhaDaPergunta=$indice #salva o índice da pergunta onde o programa está
             #serve para modificar a pergunta posteriormente
         
             exibe
@@ -188,8 +187,8 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 $temp=$linha[$linha.Length-8] #adiciona o campo que contém o número da linha na variável temp
                 $temp+=$linha[$linha.Length-7]
                 $temp+=$linha[$linha.Length-6]
-                achaLinha $temp
-                $linha=$dados[$global:indice]
+                $indice=achaLinha $temp
+                $linha=$dados[$indice]
                 
             }
 
@@ -198,9 +197,9 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 $temp=$linha[$linha.Length-4] #adiciona o campo que contém o NÚMERO da linha na variável temp
                 $temp+=$linha[$linha.Length-3]
                 $temp+=$linha[$linha.Length-2]
-                achaLinha $temp
+                $indice=achaLinha $temp
 
-                $linha=$dados[$global:indice]
+                $linha=$dados[$indice]
                 
             }
             

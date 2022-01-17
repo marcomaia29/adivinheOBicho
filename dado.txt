@@ -17,7 +17,9 @@
 017|Peixe|*|*|
 018|é um felino|019|020|
 019|gato|*|*|
-020|Esse animal gosta de banana?|021|003|
+020|Esse animal gosta de banana?|021|024|
 021|Macaco|*|*|
 022|Esse animal é um invertebrado?|023|017|
 023|lula|*|*|
+024|esse animal come capim?|025|003|
+025|cavalo|*|*|
