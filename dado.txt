@@ -3,19 +3,20 @@
 003|Cachorro|*|*|
 004|esse animal tem 4 patas?|018|008|
 005|aranha|*|*|
-006|ï¿½ mamï¿½fero?|002|016|
-007|tubarï¿½o|*|*|
+006|Esse animal é um mamífero?|002|016|
+007|tubarão|*|*|
 008|esse animal tem 8 patas?|005|010|
 009|formiga|*|*|
-010|esse animal gosta muito de aï¿½ï¿½car?|009|012|
+010|esse animal gosta muito de açúcar?|009|012|
 011|borboleta|*|*|
 012|esse animal tem asas coloridas?|011|014|
-013|centopï¿½ia|*|*|
-014|ï¿½ uma ave?|013|015|
+013|centopéia|*|*|
+014|é uma ave?|013|015|
 015|avestruz|*|*|
-016|Esse animal ï¿½ grande?|007|017|
+016|Esse animal é grande?|007|017|
 017|Peixe|*|*|
-018|ï¿½ um felino|019|020|
+018|é um felino|019|020|
 019|gato|*|*|
 020|Esse animal gosta de banana?|021|003|
 021|Macaco|*|*|
+
