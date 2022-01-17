@@ -1,7 +1,6 @@
 $dados = Get-content dado.txt #variïável recebe todo o conteudo do arquivo de texto
 Write-Output "Eu vou descobrir em qual animal você está pensando.`n`n`n" #frase de efeito
 [int]$global:indice=0 #índice da linha no arquivo texto
-[int]$global:ultima=0 #índice da ultima linha
 $global:numeropadronizado=""
 [string]$global:simounao=""
 [int]$global:linhaDaPergunta=99999
@@ -30,12 +29,14 @@ function achaLinha([string]$s){#acha o índice no arquivo texto que contém o text
 
 function achaUltima{ #acha o índice da última linha ignorando linhas em branco
     $i=0
+    [int]$u=0
     foreach ($candidato in $dados){
         if ($candidato.Length -gt 2){ #2? verificar
-            $global:ultima=$i
+            $u=$i
         }
         $i++
     }
+    return $u
 }
 
 
@@ -77,12 +78,13 @@ function resposta {
             }while($nomeAnimal.Length -lt 1)
         }
 
-        achaUltima
+        [int]$ultima=achaUltima
+
         [string]$valor=""#comporta os números padronizados do índice da última linha do texto
-        $valor=$dados[$global:ultima][0] + $dados[$global:ultima][1] + $dados[$global:ultima][2]
+        $valor=$dados[$ultima][0] + $dados[$ultima][1] + $dados[$ultima][2]
         
-        [int]$proximaresposta=$global:ultima + 3
-        [int]$proximapergunta=$global:ultima + 2
+        [int]$proximaresposta=$ultima + 3
+        [int]$proximapergunta=$ultima + 2
 
         padroniza $proximapergunta
         reconstruir $global:numeropadronizado

@@ -13,9 +13,11 @@
 013|centopéia|*|*|
 014|é uma ave?|013|015|
 015|avestruz|*|*|
-016|Esse animal ? geralmente maior que um ser humano?|007|017|
+016|Esse animal ? geralmente maior que um ser humano?|007|022|
 017|Peixe|*|*|
 018|é um felino|019|020|
 019|gato|*|*|
 020|Esse animal gosta de banana?|021|003|
 021|Macaco|*|*|
+022|Esse animal é um invertebrado?|023|017|
+023|lula|*|*|
