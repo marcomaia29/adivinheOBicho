@@ -23,8 +23,7 @@ function exibe{#exibe o segundo campo da linha, sendo pergunta ou resposta
 
 function achaLinha([string]$s){#acha o índice no arquivo texto que contém o texto em questão
     $s1= $s[0] + $s[1] + $s[2]
-    $i=([int]$s1) -1
-    return $i
+    return ([int]$s1) -1
 }
 
 function achaUltima{ #acha o índice da última linha ignorando linhas em branco
