@@ -1,6 +1,5 @@
 $dados = Get-content dado.txt #variïável recebe todo o conteudo do arquivo de texto
 Write-Output "Eu vou descobrir em qual animal você está pensando.`n`n`n" #frase de efeiton
-$global:numeropadronizado=""
 [string]$global:simounao=""
 [int]$global:linhaDaPergunta=99999
 
@@ -79,8 +78,8 @@ function resposta {
         [int]$proximaresposta=$ultima + 3
         [int]$proximapergunta=$ultima + 2
 
-        padroniza $proximapergunta
-        $linhareconstruida= reconstruir $global:numeropadronizado
+        $numeropadronizado= padroniza $proximapergunta
+        $linhareconstruida= reconstruir $numeropadronizado
 
 
         #esta parte do código se faz desnecessária ao se fazer possível retorno de funções
@@ -90,10 +89,10 @@ function resposta {
 
         
         if ($simnaopergunta -eq "n" -or $simnaopergunta -eq "N"){
-            $dados = $dados + "$global:numeropadronizado|$pergunta|$temp|$r|" #nova pergunta inserida
+            $dados = $dados + "$numeropadronizado|$pergunta|$temp|$r|" #nova pergunta inserida
         }
         else{#posteriormente adicionar código para impedir o usuário de digtar uma entrada inválida
-            $dados = $dados + "$global:numeropadronizado|$pergunta|$r|$temp|"
+            $dados = $dados + "$numeropadronizado|$pergunta|$r|$temp|"
         }
         
         $dados = $dados + "$r|$nomeAnimal|*|*|" #novo animal inserido
@@ -138,7 +137,8 @@ function reconstruir ([string]$s){#reconstroi a linha da última pergunta para mu
 }
 
 function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com zeros à esquerda #eliminar essa função depois
-    $global:numeropadronizado=([string]$numero).PadLeft(3,'0')
+    $result=([string]$numero).PadLeft(3,'0')
+    return $result
 }
      
 

@@ -5,7 +5,7 @@
 005|aranha|*|*|
 006|Esse animal é um mamífero?|002|016|
 007|tubarão|*|*|
-008|esse animal tem 8 patas?|005|010|
+008|esse animal tem 8 patas?|028|010|
 009|formiga|*|*|
 010|esse animal gosta muito de açúcar?|009|012|
 011|borboleta|*|*|
@@ -25,3 +25,5 @@
 025|cavalo|*|*|
 026|Esse animal dá leite?|027|025|
 027|vaca|*|*|
+028|Esse animal é um parasita?|029|005|
+029|Carrapato|*|*|
