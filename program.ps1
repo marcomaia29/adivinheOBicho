@@ -3,8 +3,6 @@ Write-Output "Eu vou descobrir em qual animal você está pensando.`n`n`n" #frase 
 $global:numeropadronizado=""
 [string]$global:simounao=""
 [int]$global:linhaDaPergunta=99999
-$global:linhareconstruida=""
-
 
 
 function exibe{#exibe o segundo campo da linha, sendo pergunta ou resposta
@@ -17,7 +15,6 @@ function exibe{#exibe o segundo campo da linha, sendo pergunta ou resposta
     }
 
     Write-Output "$pergunta" #Saída para o usuário
-
 
 }
 
@@ -59,7 +56,6 @@ function resposta {
             }while($nomeAnimal.Length -lt 1)
         }
 
-        
         $pergunta= Read-Host "Digite uma pergunta-de-sim-ou-não que diferencie esse animal do animal citado anteriormente"
         if($pergunta.Length -lt 1){
             do{
@@ -67,7 +63,6 @@ function resposta {
             $pergunta= Read-Host "Digite uma pergunta-de-sim-ou-não que diferencie esse animal do animal citado anteriormente"
             }while($nomeAnimal.Length -lt 1)
         }
-
 
         $simnaopergunta= Read-Host "Para o animal que você acabou de digitar, a resposta dessa pergunta é sim ou não? `n Digite `"S`" para SIM, `"N`" para NÃO"
         if($simnaopergunta.Length -lt 1){
@@ -85,7 +80,7 @@ function resposta {
         [int]$proximapergunta=$ultima + 2
 
         padroniza $proximapergunta
-        reconstruir $global:numeropadronizado
+        $linhareconstruida= reconstruir $global:numeropadronizado
 
 
         #esta parte do código se faz desnecessária ao se fazer possível retorno de funções
@@ -94,9 +89,6 @@ function resposta {
         $r=([string]$n).PadLeft(3,'0') #padroniza o int em uma string de 3 caracteres
 
         
-
-
-
         if ($simnaopergunta -eq "n" -or $simnaopergunta -eq "N"){
             $dados = $dados + "$global:numeropadronizado|$pergunta|$temp|$r|" #nova pergunta inserida
         }
@@ -106,8 +98,7 @@ function resposta {
         
         $dados = $dados + "$r|$nomeAnimal|*|*|" #novo animal inserido
 
-        
-        $dados[$global:linhaDaPergunta]=$global:linhareconstruida
+        $dados[$global:linhaDaPergunta]=$linhareconstruida
         Clear-Content -Path dado.txt #limpa o arquivo texto
         Add-Content -Value $dados -Path dado.txt
         
@@ -141,38 +132,33 @@ function reconstruir ([string]$s){#reconstroi a linha da última pergunta para mu
         $camponao=$s
     }
     
-    
-
-
-
-
-    
-    $global:linhareconstruida="$t|$camposim|$camponao|"
-    
-
+    $recons="$t|$camposim|$camponao|"
+    return $recons
+    #$global:linhareconstruida="$t|$camposim|$camponao|"
 }
 
 function padroniza ([int]$numero){#recebe um inteiro e o padroniza em string com zeros à esquerda #eliminar essa função depois
     $global:numeropadronizado=([string]$numero).PadLeft(3,'0')
 }
-        
+     
 
 
 
+
+
+#Início da aplicação
 foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira pergunta
 
     if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em questão for uma pergunta
     break }       
 }
 
-    
     [string]$temp=""
     $interruptor=0
     while ($interruptor -eq 0){
 
         #cls
         if ($linha[$linha.Length-2] -ne "*"){ #Se a linha em questão for uma pergunta
-
 
             $indice=achaLinha $linha
             $global:linhaDaPergunta=$indice #salva o índice da pergunta onde o programa está
@@ -188,7 +174,6 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 $temp+=$linha[$linha.Length-6]
                 $indice=achaLinha $temp
                 $linha=$dados[$indice]
-                
             }
 
             "n" { #Caso o usuário responda não para a pergunta
@@ -197,9 +182,7 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
                 $temp+=$linha[$linha.Length-3]
                 $temp+=$linha[$linha.Length-2]
                 $indice=achaLinha $temp
-
                 $linha=$dados[$indice]
-                
             }
             
             "f" {exit}
@@ -208,24 +191,12 @@ foreach ($linha in $dados){#Percorre o texto linha a linha e acha a primeira per
 
             }
 
-            
-        
-
         }
 
-
         else{ #Se a linha em questão for uma resposta
-
-            
-            
             resposta
             $interruptor=1 #quebra o while acima
         }
-        
-
-        
-
-        
 
     }
 

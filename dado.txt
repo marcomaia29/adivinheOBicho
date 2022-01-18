@@ -21,5 +21,7 @@
 021|Macaco|*|*|
 022|Esse animal é um invertebrado?|023|017|
 023|lula|*|*|
-024|esse animal come capim?|025|003|
+024|esse animal come capim?|026|003|
 025|cavalo|*|*|
+026|Esse animal dá leite?|027|025|
+027|vaca|*|*|
