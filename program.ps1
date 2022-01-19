@@ -69,11 +69,11 @@ function resposta {
         }
 
         $simnaopergunta= Read-Host "Para o animal que você acabou de digitar, a resposta dessa pergunta é sim ou não? `n Digite `"S`" para SIM, `"N`" para NÃO"
-        if($simnaopergunta.Length -lt 1){
+        if($simnaopergunta.Length -lt 1 -or $simnaopergunta -ne "s" -and $simnaopergunta -ne "n"){
             do{
-            Write-Output "Entrada inválida, necessário pelo menos 1 caractere"
+            Write-Output "Entrada inválida"
             $simnaopergunta= Read-Host "Para o animal que você acabou de digitar, a resposta dessa pergunta é sim ou não? `n Digite `"S`" para SIM, `"N`" para NÃO"
-            }while($nomeAnimal.Length -lt 1)
+            }while($simnaopergunta.Length -lt 1 -or $simnaopergunta -ne "s" -and $simnaopergunta -ne "n")
         }
 
         [int]$ultima=achaUltima

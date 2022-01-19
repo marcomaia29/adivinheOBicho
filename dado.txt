@@ -11,11 +11,11 @@
 011|borboleta|*|*|
 012|esse animal tem asas coloridas?|011|014|
 013|centopéia|*|*|
-014|é uma ave?|013|015|
+014|É uma ave?|013|015|
 015|avestruz|*|*|
-016|Esse animal ? geralmente maior que um ser humano?|007|022|
+016|Esse animal é geralmente maior que um ser humano?|007|022|
 017|Peixe|*|*|
-018|é um felino|019|020|
+018|É um felino|019|020|
 019|gato|*|*|
 020|Esse animal gosta de banana?|021|024|
 021|Macaco|*|*|
