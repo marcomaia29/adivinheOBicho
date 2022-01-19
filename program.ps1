@@ -1,3 +1,8 @@
+if((Test-Path -Path dado.txt -PathType Leaf) -eq $false){
+    "Erro: Arquivo dado.txt não encontrado`nEncerrando aplicação"
+    pause
+    exit
+}
 $dados = Get-content dado.txt #variïável recebe todo o conteudo do arquivo de texto
 Write-Output "Eu vou descobrir em qual animal você está pensando.`n`n`n" #frase de efeiton
 [string]$global:simounao=""
