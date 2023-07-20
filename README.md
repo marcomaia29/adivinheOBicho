@@ -25,4 +25,17 @@ Listar numeradas, usa um número qualquer e um ponto:
 
 Para listas com subitens é só criar uma identação com 3 espaços.
 
-...
+Lista com bullet point:
+
+* Tarefa 1
+  * Subtarefa
+* Tarefa 2
+* Tarefa 3
+
+Lista com check box
+
+- [x] Tarefa 1
+- [ ] Tarefa 2
+- [ ] Tarefa 3
+
+
