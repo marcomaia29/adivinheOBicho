@@ -1,4 +1,4 @@
-# adivinheOBicho
+# adivinheOBicho ✋
 
 # projeto como prototipo para utilizacao do github em projetos para YD e MC.
 
@@ -44,5 +44,38 @@ Incluir figura, basta arrastar imagem para a linha abaixo. Não usar imagem com 
 
 Criar links, mensagem entre colchetes e link entre pareteses
 [Acesse meu Github](https://github.com/marcomaia29/)
+
+Tabelas:
+
+Num | Nome | Nota
+---|---|---
+1 | Marco | 9
+2 | Caio | 8
+
+Trechos de código: usar crase
+
+O comando Fix(CT-00001)
+O comando `Fix(CT-00001)`
+
+```
+fix (ct-0001)
+   real
+   (
+    if (@member is null)
+       0;
+    endif
+    )
+```
+
+Para emojis usar dois pontos e o nome do imoji 🖖 😀
+Pode copiar também de https://emojipedia.org/
+
+@github/marcomaia29
+
+Referencia de pull request
+#1
+
+
+
 
 No ícone M| tem todos os MD disponíveis
