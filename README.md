@@ -70,9 +70,10 @@ fix (ct-0001)
 Para emojis usar dois pontos e o nome do imoji 🖖 😀
 Pode copiar também de https://emojipedia.org/
 
-@github/marcomaia29
 
-Referencia de pull request
+Os pontos abaixo só funcionam dentro de pull requests ou issues 
+referencia usuario: @marcomaia29
+Referencia de pull request ou issues
 #1
 
 
