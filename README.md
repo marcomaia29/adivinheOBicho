@@ -77,6 +77,15 @@ Referencia de pull request ou issues
 #1
 
 
+Citações de textos de outras pessoas:
+
+Como diria **Fernando Pessoa**:
+
+> Navegar é preciso.
+> Viver não é preciso.
+
+ 
+
 
 
 No ícone M| tem todos os MD disponíveis
