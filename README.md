@@ -38,4 +38,11 @@ Lista com check box
 - [ ] Tarefa 2
 - [ ] Tarefa 3
 
+Incluir figura, basta arrastar imagem para a linha abaixo. Não usar imagem com mais de 450 pixels de largura e usar compactados como png e jpeg
 
+![Teste Incluir imagem](https://github.com/marcomaia29/adivinheOBicho/assets/57294796/f9f3a587-3d6a-4baf-9ae7-4aa29502275a)
+
+Criar links, mensagem entre colchetes e link entre pareteses
+[Acesse meu Github](https://github.com/marcomaia29/)
+
+No ícone M| tem todos os MD disponíveis
